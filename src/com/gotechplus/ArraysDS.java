@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class ArraysDS {
 
 
-    private int[] myArray = new int[7];
-    private int[] myArray2 = new int[7];
+    private int[] myArray = new int[15];
+    private int[] myArray2 = new int[15];
     Scanner scan = new Scanner(System.in);
 
     public void fillMyArray() {
@@ -34,13 +34,13 @@ public class ArraysDS {
 
     public void printMyArray() {
         System.out.println("myArray 1");
-        for (int i = 0; i < myArray.length; i++) {
-            System.out.print("  " + myArray[i]);
+        for (int k : myArray) {
+            System.out.print("  " + k);
         }
-        System.out.println("\n myArray2; ");
-        for (int i = 0; i < myArray2.length; i++) {
-            System.out.print("  " + myArray2[i]);
-        }
+//        System.out.println("\n myArray2; ");
+//        for (int j : myArray2) {
+//            System.out.print("  " + j);
+//        }
         System.out.println("");
     }
 
@@ -79,7 +79,7 @@ public class ArraysDS {
     }
 
     public void insertionSort() {
-        int temp = -1;
+        int temp;
         for (int firstUnsortedIndex = 1; firstUnsortedIndex < myArray.length; firstUnsortedIndex++) {
             temp = myArray[firstUnsortedIndex];
             int i;
@@ -89,6 +89,7 @@ public class ArraysDS {
             myArray[i] = temp;
         }
     }
+
     //my implementation of insertion sort algorithm.
     public void myInsertionSort() {
         int sortedPartIndex = 0;
@@ -113,8 +114,30 @@ public class ArraysDS {
     }
 
 
-    public void myShellInsertionSort(){
+    public void shellInsertionSort() {      // ⟲
+        int gap = myArray.length / 2;
+        while (gap >= 1) {
+            int temp;
+            for (int firstUnsortedIndex = gap; firstUnsortedIndex < myArray.length && firstUnsortedIndex + gap >= 0; firstUnsortedIndex += gap) {
+                temp = myArray[firstUnsortedIndex];
+                int i;
+                for (i = firstUnsortedIndex; i > 0 && temp < myArray[i - gap]; i -= gap) {
+                    myArray[i] = myArray[i - gap];
+                    if (i - gap < 0) {
+                        break;
+                    }
+                }
+                myArray[i] = temp;
+            }
+            System.out.println("the gap value is: " + gap);
+            gap /= 2;
+        }
+        System.out.println(gap);
+    }
+
+    public void myMergingSort(){
 
     }
+
 
 }

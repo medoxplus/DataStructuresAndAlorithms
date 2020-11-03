@@ -6,8 +6,7 @@ public class Main {
         ArraysDS myArray = new ArraysDS();
         myArray.fillMyArray();
         myArray.printMyArray();
-        myArray.insertionSort();
-        myArray.myInsertionSort();
+        myArray.shellInsertionSort();
         myArray.printMyArray();
     }
 }
