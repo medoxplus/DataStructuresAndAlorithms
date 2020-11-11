@@ -6,64 +6,28 @@ import java.util.Scanner;
 public class ArraysDS {
 
 
-    private int[] myArray = new int[15];
-    private int[] myArray2 = new int[15];
-    Scanner scan = new Scanner(System.in);
 
-    public void fillMyArray() {
-//        for (int i = 0; i < myArray.length; i++) {
-//            System.out.print("Enter an Integer: ");
-//            myArray[i] = scan.nextInt();
-//            scan.nextLine();
-//        }
-        Random random = new Random();
-        for (int i = 0; i < myArray.length; i++) {
-            int n = (int) (random.nextFloat() * 100);
-            myArray[i] = n;
-            myArray2[i] = n;
-        }
-//        myArray[0] = 20;
-//        myArray[1] = 35;
-//        myArray[2] = -15;
-//        myArray[3] = 7;
-//        myArray[4] = 55;
-//        myArray[5] = 1;
-//        myArray[6] = -22;
-        scan.close();
-    }
 
-    public void printMyArray() {
-        System.out.println("myArray 1");
-        for (int k : myArray) {
-            System.out.print("  " + k);
-        }
-//        System.out.println("\n myArray2; ");
-//        for (int j : myArray2) {
-//            System.out.print("  " + j);
-//        }
-        System.out.println("");
-    }
-
-    public void swap(int i, int j) {
+    public static void swap(int i, int j) {
         int temp;
-        temp = myArray[i]; // swap the two elements
-        myArray[i] = myArray[j];
-        myArray[j] = temp;
+        temp = i; // swap the two elements
+        i = j;
+        j = temp;
     }
 
-    public void bubbleSort() {
+    public static void bubbleSort(int[] myArray) {
         int unsortedPartitionIndex = myArray.length - 1;
         while (unsortedPartitionIndex > 0) {
             for (int i = 0; i < unsortedPartitionIndex; i++) {
                 if (myArray[i] > myArray[i + 1]) {
-                    swap(i, i + 1);
+                    swap(myArray[i], myArray[i+1]);
                 }
             }
             unsortedPartitionIndex--;
         }
     }
 
-    public void selectionSort() {
+    public static void selectionSort(int[] myArray) {
         int unsortedPartitionIndex = myArray.length - 1;
 
         while (unsortedPartitionIndex > 0) {
@@ -78,7 +42,7 @@ public class ArraysDS {
         }
     }
 
-    public void insertionSort() {
+    public static void insertionSort(int[] myArray) {
         int temp;
         for (int firstUnsortedIndex = 1; firstUnsortedIndex < myArray.length; firstUnsortedIndex++) {
             temp = myArray[firstUnsortedIndex];
@@ -91,7 +55,7 @@ public class ArraysDS {
     }
 
     //my implementation of insertion sort algorithm.
-    public void myInsertionSort() {
+    public static void myInsertionSort(int[] myArray2) {
         int sortedPartIndex = 0;
         int unsortedPartIndex = 1;
         int temp;
@@ -114,7 +78,7 @@ public class ArraysDS {
     }
 
 
-    public void shellInsertionSort() {      // ⟲
+    public static void shellInsertionSort(int[] myArray) {      // ⟲
         int gap = myArray.length / 2;
         while (gap >= 1) {
             int temp;
@@ -134,10 +98,11 @@ public class ArraysDS {
         }
         System.out.println(gap);
     }
-
-    public void myMergingSort(){
-
+// the king of implementing algorithms
+    public static int[] myMergeSort(int[] myArray){
+        return myArray;
     }
+
 
 
 }
