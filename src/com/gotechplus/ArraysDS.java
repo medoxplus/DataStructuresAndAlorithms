@@ -52,6 +52,29 @@ public class ArraysDS {
         }
     }
 
+    public static void insertionSortRecursive(int[] myArray, int firstUnsortedIndex) {
+        if (firstUnsortedIndex == myArray.length) {
+            return;
+        }
+        int temp;
+        temp = myArray[firstUnsortedIndex];
+        int i;
+        for (i = firstUnsortedIndex; i > 0 && temp < myArray[i - 1]; i--) {
+            myArray[i] = myArray[i - 1];
+        }
+        myArray[i] = temp;
+        System.out.println("firstUnsortedIndex = " + firstUnsortedIndex);
+        for (int j : myArray) {
+            System.out.print(j);
+            System.out.print(", ");
+        }
+        System.out.println("");
+        System.out.println("--------------------");
+        insertionSortRecursive(myArray, ++firstUnsortedIndex);
+
+
+    }
+
     //my implementation of insertion sort algorithm.
     public static void myInsertionSort(int[] myArray2) {
         int sortedPartIndex = 0;
@@ -110,9 +133,9 @@ public class ArraysDS {
         merge(input, start, mid, end);
     }
 
-    public static void merge(int[] input, int start, int mid, int end) {
+    private static void merge(int[] input, int start, int mid, int end) {
 
-        if (input[mid - 1] <= input[mid]) {
+        if (input[mid - 1] >= input[mid]) {
             return;
         }
 
@@ -121,12 +144,54 @@ public class ArraysDS {
         int tempIndex = 0;
 
         int[] temp = new int[end - start];
-        while (i < mid && j < end){
-            temp[tempIndex++] = input[i] <= input[j] ? input[i++] : input[j++];
+        while (i < mid && j < end) {
+            temp[tempIndex++] = input[i] >= input[j] ? input[i++] : input[j++];
         }
 
         System.arraycopy(input, i, input, start + tempIndex, mid - i);
         System.arraycopy(temp, 0, input, start, tempIndex);
+    }
+
+    public static void myQuickSort(int[] inputArray, int start, int end) {
+        if (end - start < 2) {
+            return;
+        }
+
+        int partitionPart = partition(inputArray, start, end);
+        myQuickSort(inputArray, start, partitionPart);
+        myQuickSort(inputArray, partitionPart + 1, end);
+    }
+
+    public static int partition(int[] inputArray, int start, int end) {
+        int pivot = inputArray[start];
+        int i = start;
+        int j = end;
+        while (i < j) {
+            while (i < j && inputArray[--j] > pivot) ;
+            if (i < j) {
+                inputArray[i] = inputArray[j];
+            }
+
+            while (i < j && inputArray[++i] < pivot) ;
+            if (i < j) {
+                inputArray[j] = inputArray[i];
+            }
+        }
+        System.out.println("the pivot is " + pivot + " should be in the index " + j + " the i was " + i);
+        inputArray[j] = pivot;
+        printMyArray(inputArray);
+        return j;
+    }
+    public static void printMyArray(int[] myArray) {
+
+        for (int k : myArray) {
+            System.out.print("  " + k);
+        }
+//        System.out.println("\n myArray2; ");
+//        for (int j : myArray2) {
+//            System.out.print("  " + j);
+//        }
+        System.out.println("");
     }
 }
 

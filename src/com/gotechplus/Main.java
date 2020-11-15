@@ -3,6 +3,8 @@ package com.gotechplus;
 import java.util.Random;
 import java.util.Scanner;
 
+import static com.gotechplus.ArraysDS.printMyArray;
+
 public class Main {
 
     private static int[] myArray = new int[7];
@@ -11,22 +13,14 @@ public class Main {
 
     public static void main(String[] args) {
         fillMyArray(myArray);
+        System.out.print("This is the original Array: ");
         printMyArray(myArray);
-        ArraysDS.mergeSort(myArray, 0, myArray.length);
+        int i = 1;
+        ArraysDS.myQuickSort(myArray, 0, myArray.length);
         printMyArray(myArray);
     }
 
-    public static void printMyArray(int[] myArray) {
-        System.out.println("myArray");
-        for (int k : myArray) {
-            System.out.print("  " + k);
-        }
-//        System.out.println("\n myArray2; ");
-//        for (int j : myArray2) {
-//            System.out.print("  " + j);
-//        }
-        System.out.println("");
-    }
+
 
 
     public static void fillMyArray(int[] myArray) {
@@ -35,18 +29,18 @@ public class Main {
 //            myArray[i] = scan.nextInt();
 //            scan.nextLine();
 //        }
-        Random random = new Random();
-        for (int i = 0; myArray.length > i; i++) {
-            int n = (int) (random.nextFloat() * 100);
-            myArray[i] = n;
-        }
-//        myArray[0] = 20;
-//        myArray[1] = 35;
-//        myArray[2] = -15;
-//        myArray[3] = 7;
-//        myArray[4] = 55;
-//        myArray[5] = 1;
-//        myArray[6] = -22;
+//        Random random = new Random();
+//        for (int i = 0; myArray.length > i; i++) {
+//            int n = (int) (random.nextFloat() * 100);
+//            myArray[i] = n;
+//        }
+        myArray[0] = 20;
+        myArray[1] = 35;
+        myArray[2] = -15;
+        myArray[3] = 7;
+        myArray[4] = 55;
+        myArray[5] = 1;
+        myArray[6] = -22;
         scan.close();
     }
 }
